@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using GbAviationTicketApi.Data.IData;
+﻿using GbAviationTicketApi.Data.IData;
 using GbAviationTicketApi.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;

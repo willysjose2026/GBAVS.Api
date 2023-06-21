@@ -1,5 +1,3 @@
-using EmailService;
-using EmailService.Contracts;
 using GbAviationTicketApi;
 using GbAviationTicketApi.Data;
 using GbAviationTicketApi.Data.IData;
@@ -43,9 +41,6 @@ builder.Services.AddAuthorization(options =>
 builder.Services.AddSingleton<ILoggerManager, LoggerManager>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
-var emailConfig = builder.Configuration.GetSection("EmailConfiguration")
-    .Get<EmailConfiguration>();
-builder.Services.AddSingleton(emailConfig ?? new());
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddIdentity<GbavsUser, IdentityRole>()
@@ -113,8 +108,6 @@ builder.Services.AddAuthentication(x =>
 
 builder.Services.AddScoped<IGbavsContext, GbavsContext>();
 builder.Services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
-builder.Services.AddScoped<IEmailSender, EmailSender>();
-
 
 var app = builder.Build();
 

@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using EmailService;
-using EmailService.Contracts;
 using GbAviationTicketApi.Extentions;
 using GbAviationTicketApi.Models.Dtos;
 using GbAviationTicketApi.Repository.IRepository;

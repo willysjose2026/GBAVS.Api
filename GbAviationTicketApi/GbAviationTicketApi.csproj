@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -24,13 +24,17 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.NET.Build.Containers" Version="7.0.304" />
     <PackageReference Include="NLog.Web.AspNetCore" Version="5.2.3" />
 	  <PackageReference Include="NLog" Version="5.*" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\EmailService\EmailService.csproj" />
-  </ItemGroup>
+	<PropertyGroup>
+		<ContainerImageName>gbavs-api</ContainerImageName>
+		<ContainerImageTags>latest</ContainerImageTags>
+		<PublishProfile>DefaultContainer</PublishProfile>
+		<RuntimeIdentifier>linux-x64</RuntimeIdentifier>
+	</PropertyGroup>
 
 </Project>
