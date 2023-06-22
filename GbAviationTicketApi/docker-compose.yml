@@ -1,0 +1,32 @@
+﻿version: '3.8'
+name: gbavs-api
+services:
+    api:
+        container_name: gbavs-api
+        image: gbavs-api:latest
+        environment:
+            - ASPNETCORE_ENVIRONMENT=docker
+            - ASPNETCORE_URLS=http://+:80
+        ports:
+          - 80:80
+        depends_on:
+            sql-server-db:
+                condition: service_healthy
+    sql-server-db:
+        container_name: sql-server-db
+        image: microsoft/mssql-server-db-linux:2022-latest
+        ports:
+          - "1433:1433"
+        env_file:
+          - MSSQL_SA_PASSWORD=admin123
+          - ACCEPT_EULA=Y
+          - MSSQL_DATA_DIR=/var/opt/sqlserver/data
+          - MSSQL_LOG_DIR=/var/opt/sqlserver/log
+          - MSSQL_BACKUP_DIR=/var/opt/sqlserver/backup
+        volumes:
+          - sqlsystem:/var/opt/mssql/
+          - sqldata:${MSSQL_DATA_DIR}
+          - sqllog:${MSSQL_LOG_DIR}
+          - sqlbackup:${MSSQL_BACKUP_DIR}
+volumes:
+  sqldata:
