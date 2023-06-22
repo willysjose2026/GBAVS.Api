@@ -20,13 +20,7 @@ services:
         env_file:
           - MSSQL_SA_PASSWORD=admin123
           - ACCEPT_EULA=Y
-          - MSSQL_DATA_DIR=/var/opt/sqlserver/data
-          - MSSQL_LOG_DIR=/var/opt/sqlserver/log
-          - MSSQL_BACKUP_DIR=/var/opt/sqlserver/backup
         volumes:
-          - sqlsystem:/var/opt/mssql/
-          - sqldata:${MSSQL_DATA_DIR}
-          - sqllog:${MSSQL_LOG_DIR}
-          - sqlbackup:${MSSQL_BACKUP_DIR}
+          - sqldata:/data/db
 volumes:
   sqldata:
