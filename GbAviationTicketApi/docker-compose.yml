@@ -17,7 +17,7 @@ services:
         image: microsoft/mssql-server-db-linux:2022-latest
         ports:
           - "1433:1433"
-        env_file:
+        environment:
           - MSSQL_SA_PASSWORD=admin123
           - ACCEPT_EULA=Y
         volumes:
